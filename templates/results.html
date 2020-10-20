@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>ExtraWordinary</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css_files/styles_res.css')}}"/>
+      <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+      <link href='https://fonts.googleapis.com/css?family=Allan' rel='stylesheet'>
+   </head>
+   <body>
+      <h1><a href = "{{ url_for('home') }}"> Extra<span id="w">W</span>ordinary! </a></h1>
+      <div class="wrapper">
+         <h2>Results of: <span id="search-word">{{s_word}}</span></h2>
+         <div class="main">
+            <form action="#" class="search-bar" method="post">
+               <input type="search" name="search" pattern=".*\S.*" required>
+               <button class="search-btn" type="submit">
+               <span>Search</span>
+               </button>
+            </form>
+         </div>
+      </div>
+      <div class="header">
+      <div class="def">
+         <h3><i>{{n}}</i></h3>
+         <ol>
+            {% for n_i in nouns %}
+            <li>{{n_i}}</li>
+            {% endfor %}
+         </ol>
+         <h3><i>{{v}}</i></h3>
+         <ol>
+            {% for v_i in verbs %}
+            <li>{{v_i}}</li>
+            {% endfor %}
+         </ol>
+         <h3><i>{{adj}}</i></h3>
+         <ol>
+            {% for adj_i in adjectives %}
+            <li>{{adj_i}}</li>
+            {% endfor %}
+            <h3><i>{{adv}}</i></h3>
+         </ol>
+         <ol>
+            {% for adv_i in adverbs %}
+            <li>{{adv_i}}</li>
+            {% endfor %}
+         </ol>
+      </div>
+      <div class="row">
+         <div class="column">
+            <h3>Rhymes</h3>
+            <ul>
+               {% for rhyme_i in rhymes %}
+               <li><a href="{{ url_for('results', word=rhyme_i) }}">{{rhyme_i}}</a></li>
+               {% endfor %}	
+            </ul>
+         </div>
+         <div class="column">
+            <h3>Synonyms</h3>
+            <ul>
+               {% for syn_i in syns %}
+               <li><a href="{{ url_for('results', word=syn_i) }}">{{syn_i}}</a></li>
+               {% endfor %}
+            </ul>
+         </div>
+         <div class="column">
+            <h3>Antonyms</h3>
+            <ul>
+               {% for ant_i in ants %}
+               <li><a href="{{ url_for('results', word=ant_i) }}">{{ant_i}}</a></li>
+               {% endfor %}	
+            </ul>
+         </div>
+         <div class="column">
+            <h3>Word Frequency</h3>
+            <ul>
+               <li>{{freq}}%</li>
+            </ul>
+         </div>
+      </div>
+      <div class="footer">
+         <p>© 2020 Copyright: <a href = "mailto: nir9696@gmail.com"> Nir Ki-tov </a></p>
+      </div>
+   </body>
+</html>
